@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+  --rojo: #d70405;
+  --gris: #999999;
+  --crema: #ede9e7;
+}
+
+body.registro {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, var(--rojo), #322);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #222;
+}
+
+.registro-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  width: 100%;
+  max-width: 1100px;
+  padding: 40px 20px;
+}
+
+.registro-container {
+  background: var(--crema);
+  border-radius: 20px;
+  padding: 40px 50px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  max-width: 420px;
+  width: 100%;
+  animation: fadeIn 1s ease;
+  text-align: center;
+}
+
+.registro-container h2 {
+  color: var(--rojo);
+  margin-bottom: 10px;
+}
+
+.registro-container p {
+  color: #444;
+  margin-bottom: 25px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.input-group input, .input-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1em;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-group input:focus, .input-group select:focus {
+  border-color: var(--rojo);
+  box-shadow: 0 0 6px rgba(215, 4, 5, 0.4);
+}
+
+.btn-registro {
+  background: var(--rojo);
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  width: 100%;
+  font-size: 1.05em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-registro:hover {
+  background: #a30203;
+  transform: scale(1.05);
+}
+
+.mensaje-login {
+  margin-top: 15px;
+}
+
+.mensaje-login a {
+  color: var(--rojo);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.mensaje-login a:hover {
+  text-decoration: underline;
+}
+
+/* Imagen lateral */
+.registro-imagen img {
+  width: 100%;
+  max-width: 400px;
+  filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+  transition: transform 0.4s ease;
+  animation: fadeIn 1s ease;
+}
+
+.registro-imagen img:hover {
+  transform: scale(1.05);
+}
+
+/* Animación */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(30px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .registro-content {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  .registro-container {
+    max-width: 90%;
+    padding: 30px;
+  }
+  .registro-imagen img {
+    max-width: 300px;
+  }
+}

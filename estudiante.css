@@ -1,0 +1,104 @@
+:root {
+    --rojo: #d70405;
+    --gris: #999999;
+    --crema: #ede9e7;
+  }
+  
+  body.estudiante {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--crema), #f8f8f8);
+    color: #222;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* CONTENEDOR PRINCIPAL */
+  .boletin-container {
+    background: white;
+    margin: 60px auto;
+    padding: 40px 50px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    max-width: 900px;
+    width: 90%;
+    animation: fadeIn 1s ease;
+  }
+  
+  .boletin-container h2 {
+    text-align: center;
+    color: var(--rojo);
+    margin-bottom: 10px;
+  }
+  
+  .boletin-container p {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  /* DATOS DEL ALUMNO */
+  .datos-alumno {
+    background: var(--crema);
+    border-left: 5px solid var(--rojo);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+  }
+  
+  .datos-alumno h3 {
+    margin-top: 0;
+    color: var(--rojo);
+  }
+  
+  .datos-alumno p {
+    margin: 5px 0;
+    font-size: 1em;
+  }
+  
+  /* TABLA DE NOTAS */
+  .boletin-tabla h3 {
+    color: var(--rojo);
+    margin-bottom: 15px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    overflow-x: auto;
+  }
+  
+  th {
+    background: var(--rojo);
+    color: white;
+    padding: 12px;
+    border-radius: 4px 4px 0 0;
+  }
+  
+  td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  tr:hover {
+    background: #f9f9f9;
+  }
+  
+  /* ANIMACIÓN */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .boletin-container {
+      padding: 25px;
+    }
+    table {
+      font-size: 0.9em;
+    }
+  }
+    
+  

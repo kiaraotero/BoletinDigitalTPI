@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boletín del Estudiante - Colegio Dr. Ernesto Guevara</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/estudiante.css">
+</head>
+
+<body class="estudiante">
+
+  <header class="header">
+    <div class="logo">
+      <img src="imagenes/logoEsc.png" alt="Logo Colegio" class="logo-img">
+      <div class="logo-text">
+        <h1>Boletín Digital</h1>
+        <p>Colegio Dr. Ernesto Guevara</p>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="index.html">Inicio</a>
+      <a href="ingresar.html">Cerrar sesión</a>
+    </nav>
+  </header>
+
+  <main class="estudiante-main">
+    <div class="boletin-container">
+      <h2>📘 Boletín del Estudiante</h2>
+      <p>Visualizá tus materias y calificaciones.</p>
+
+      <!-- Información del alumno -->
+      <div class="datos-alumno">
+        <h3>Datos personales</h3>
+        <p><strong>Nombre:</strong> <span id="nombreAlumno">Cargando...</span></p>
+        <p><strong>DNI:</strong> <span id="dniAlumno">Cargando...</span></p>
+        <p><strong>Correo:</strong> <span id="emailAlumno">Cargando...</span></p>
+      </div>
+
+      <!-- Tabla de notas -->
+      <div class="boletin-tabla">
+        <h3>Notas por materia</h3>
+        <table id="tablaNotas">
+          <thead>
+            <tr>
+              <th>Materia</th>
+              <th>1° Trimestre</th>
+              <th>2° Trimestre</th>
+              <th>3° Trimestre</th>
+              <th>Promedio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td colspan="5">Cargando datos...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 Colegio Dr. Ernesto Guevara | Desarrollado por <span>Sogitec - Kiara Otero</span></p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      try {
+        // Simulamos obtener el email logueado (luego se reemplaza con sesión)
+        const email = localStorage.getItem("emailUsuario");
+
+        if (!email) {
+          alert("⚠️ No has iniciado sesión");
+          window.location.href = "ingresar.html";
+          return;
+        }
+
+        // Obtener datos del estudiante
+        const resUsuario = await fetch(`http://localhost:3000/api/usuarios/${email}`);
+        const usuario = await resUsuario.json();
+
+        document.getElementById("nombreAlumno").textContent = usuario.nombre;
+        document.getElementById("dniAlumno").textContent = usuario.dni;
+        document.getElementById("emailAlumno").textContent = usuario.email;
+
+        // Obtener notas del estudiante
+        const resNotas = await fetch(`http://localhost:3000/api/notas/${usuario.id}`);
+        const notas = await resNotas.json();
+
+        const tablaBody = document.querySelector("#tablaNotas tbody");
+        tablaBody.innerHTML = "";
+
+        if (notas.length === 0) {
+          tablaBody.innerHTML = "<tr><td colspan='5'>No hay notas registradas.</td></tr>";
+          return;
+        }
+
+        notas.forEach(n => {
+          const promedio = ((n.trimestre1 + n.trimestre2 + n.trimestre3) / 3).toFixed(1);
+          const fila = `
+            <tr>
+              <td>${n.materia}</td>
+              <td>${n.trimestre1}</td>
+              <td>${n.trimestre2}</td>
+              <td>${n.trimestre3}</td>
+              <td>${promedio}</td>
+            </tr>`;
+          tablaBody.innerHTML += fila;
+        });
+
+      } catch (error) {
+        console.error("Error al cargar datos:", error);
+        alert("❌ No se pudieron cargar los datos del boletín.");
+      }
+    });
+  </script>
+
+</body>
+</html>

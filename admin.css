@@ -1,0 +1,124 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #d70405, #322);
+    color: #222;
+  }
+  
+  .header {
+    background: #d70405;
+    color: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+  
+  .header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 600;
+    transition: color 0.3s;
+  }
+  
+  .header nav a:hover,
+  .header nav .activo {
+    color: #ede9e7;
+  }
+  
+  .notas-section {
+    background: #ede9e7;
+    padding: 50px 30px;
+    margin: 40px auto;
+    max-width: 900px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  }
+  
+  .notas-section h2 {
+    color: #d70405;
+    text-align: center;
+  }
+  
+  .form-notas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+  }
+  
+  .input-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input-group label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  .input-group input,
+  .input-group select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border 0.3s;
+  }
+  
+  .input-group input:focus,
+  .input-group select:focus {
+    border-color: #d70405;
+  }
+  
+  .btn-guardar {
+    grid-column: 1 / -1;
+    background: #d70405;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-guardar:hover {
+    background: #a30203;
+    transform: scale(1.05);
+  }
+  
+  .tabla-container {
+    margin-top: 40px;
+  }
+  
+  .tabla-notas {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
+  .tabla-notas th {
+    background: #d70405;
+    color: white;
+    padding: 12px;
+    text-align: center;
+  }
+  
+  .tabla-notas td {
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .tabla-notas tr:hover {
+    background: #f8f8f8;
+  }
+  
